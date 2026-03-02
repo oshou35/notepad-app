@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Note } from '../types';
 
 interface NoteListProps {
@@ -15,6 +16,8 @@ export function NoteList({
   onCreateNote,
   onDeleteNote
 }: NoteListProps) {
+  const [searchQuery, setSearchQuery] = useState('');
+
   const formatDate = (timestamp: number) => {
     const date = new Date(timestamp);
     return date.toLocaleDateString('ja-JP', {
@@ -25,6 +28,13 @@ export function NoteList({
     });
   };
 
+  const filteredNotes = searchQuery.trim()
+    ? notes.filter(note =>
+        note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        note.content.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : notes;
+
   return (
     <div className="note-list">
       <div className="note-list-header">
@@ -32,12 +42,21 @@ export function NoteList({
         <button onClick={onCreateNote} className="new-note-btn">
           + 新規メモ
         </button>
+        <input
+          type="text"
+          className="search-input"
+          placeholder="検索..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </div>
       <div className="note-list-items">
-        {notes.length === 0 ? (
-          <p className="empty-message">メモがありません</p>
+        {filteredNotes.length === 0 ? (
+          <p className="empty-message">
+            {searchQuery.trim() ? '検索結果がありません' : 'メモがありません'}
+          </p>
         ) : (
-          notes.map(note => (
+          filteredNotes.map(note => (
             <div
               key={note.id}
               className={`note-item ${selectedNoteId === note.id ? 'selected' : ''}`}
