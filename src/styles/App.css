@@ -70,9 +70,47 @@ body {
   background-color: #fff;
 }
 
+.sort-select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.sort-select:focus {
+  border-color: #4CAF50;
+  background-color: #fff;
+}
+
+.pin-limit-error {
+  padding: 10px 16px;
+  background-color: #fdecea;
+  color: #b71c1c;
+  border-bottom: 1px solid #f5c6c6;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+
 .note-list-items {
   flex: 1;
   overflow-y: auto;
+}
+
+.note-list-section-header {
+  padding: 8px 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  background-color: #eceff1;
+  border-bottom: 1px solid #e0e0e0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .empty-message {
@@ -103,6 +141,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
+  gap: 8px;
 }
 
 .note-item h3 {
@@ -113,6 +152,39 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   flex: 1;
+}
+
+.note-item h3.note-title-untitled {
+  color: #b0b0b0;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.note-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pin-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 4px;
+  line-height: 1;
+  opacity: 0.35;
+  filter: grayscale(1);
+  transition: opacity 0.2s, filter 0.2s;
+}
+
+.pin-btn:hover {
+  opacity: 0.7;
+}
+
+.pin-btn.pinned {
+  opacity: 1;
+  filter: none;
 }
 
 .delete-btn {
@@ -159,6 +231,25 @@ body {
   font-size: 16px;
 }
 
+.title-required-banner {
+  padding: 10px 30px;
+  background-color: #fdecea;
+  color: #b71c1c;
+  border-bottom: 1px solid #f5c6c6;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.note-editor-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-editor-content-field {
+  flex: 1;
+}
+
 .note-title-input {
   padding: 20px 30px;
   font-size: 24px;
@@ -187,6 +278,95 @@ body {
 
 .note-content-input::placeholder {
   color: #ccc;
+}
+
+.char-counter {
+  position: absolute;
+  right: 14px;
+  bottom: 6px;
+  font-size: 12px;
+  color: #999;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 2px 6px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.char-counter-limit {
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+/* Delete Confirm Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-dialog {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  padding: 24px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.modal-body {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.modal-btn {
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.modal-btn-cancel {
+  background-color: #fff;
+  color: #555;
+  border-color: #ccc;
+}
+
+.modal-btn-cancel:hover {
+  background-color: #f5f5f5;
+}
+
+.modal-btn-danger {
+  background-color: #d32f2f;
+  color: #fff;
+}
+
+.modal-btn-danger:hover {
+  background-color: #b71c1c;
 }
 
 /* Responsive Design */
