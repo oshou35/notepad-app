@@ -103,14 +103,9 @@ Playwright Inspectorが起動し、ステップごとにテストを実行・デ
 
 ### 3. テストファイルの場所
 
-テストファイルは `tests/` ディレクトリに配置されています（すべてPlaywright Test形式）：
+テストファイルは `tests/` ディレクトリに配置されています（Playwright Test形式）：
 
-- `final-test.spec.mjs` - 包括的な機能テスト（メモ作成、編集、削除、永続化など）
-- `wait-test.spec.mjs` - 待機処理のテスト
-- `console-test.spec.mjs` - コンソール出力のテスト
-- `debug-test.spec.mjs` - デバッグ用テスト
-- `screenshot-test.spec.mjs` - スクリーンショット取得のテスト
-- `test-app.spec.mjs` - 基本的なアプリテスト
+- `test-app.spec.mjs` - メモアプリの基本機能（作成、編集、選択、削除、永続化）を確認するE2Eテスト
 
 ### 4. テストレポート
 
@@ -164,12 +159,7 @@ notepad-app/
 │   └── main.tsx                # エントリーポイント
 │
 ├── tests/                      # テストファイル（Playwright Test形式）
-│   ├── console-test.spec.mjs
-│   ├── debug-test.spec.mjs
-│   ├── final-test.spec.mjs
-│   ├── screenshot-test.spec.mjs
-│   ├── test-app.spec.mjs
-│   └── wait-test.spec.mjs
+│   └── test-app.spec.mjs
 │
 ├── index.html                  # HTMLテンプレート
 ├── package.json                # 依存関係とスクリプト
